@@ -18,7 +18,7 @@ st.markdown(
 )
 
 #App introduction and description
-st.title("Welcome to Reflect :brain:")
+st.title("Welcome to Reflect")
 
 # Create two columns for description and image
 col1, col2 = st.columns([3,1])  
