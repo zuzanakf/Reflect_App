@@ -63,10 +63,11 @@ if prompt := st.chat_input("Start by describing your feelings..."):
     st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 # Save conversation to DataFrame when user types 'stop'
-if prompt.lower() == 'stop':
+if prompt is not None and prompt.lower() == 'stop':
     df = pd.DataFrame(st.session_state.messages)
     df.to_csv('reflect_conversation.csv', index=False)
     st.success('Conversation saved to DataFrame.')
+
 
 # Add button to go to the next page
 if st.button('NEXT'):
