@@ -18,46 +18,49 @@ st.markdown(
 )
 
 #App introduction and description
-#App introduction and description
 st.title("Welcome to Reflect :brain:")
 
 # Create two columns for description and image
-col1, col2 = st.columns([3,1])  # adjust the numbers to change the width ratio of the columns
+col1, col2 = st.columns([3,1])  
 
 with col1:
     st.markdown("""
-    Sometimes it can be difficult to understand our emotional reactions.
-    Reflect is here as a guide on your journey of emotional self-discovery. 
-    Through a series of interactive questions, Reflect helps you delve deeper into your feelings, 
-    identify your emotional triggers, and gain a better understanding of your reactions. 
-    Let's get started! :rocket:
-                
-    Please note, Reflect is not a substitute for professional mental health services.
-    This is a project!
+    Reflect is an interactive tool designed to help you explore and understand your emotions. 
+    You will be guided through a series of questions and based on your responses, Reflect will provide you with insights into your emotional state.
+    Let's get started!
+    *Please note: Reflect is not a substitute for professional mental health services.*
     """)
 
 with col2:
     st.image('image.png')  # replace 'image.png' with the path to your image file
 
-
 #Personal information inputs
-st.header("Let's Reflect :thought_balloon:")
+st.header("Tell us about yourself")
+
+user_name = st.text_input("Your name", value="", help="Enter your name here.")
+
+st.header("Your current emotional state")
+
 col1, col2 = st.columns(2)
 
 with col1:
-    user_name = st.text_input("What is your name? :bust_in_silhouette:")
     user_emotion = st.selectbox(
-        "What is your main emotion right now? :face_with_monocle:", 
-        ('Happy', 'Sad', 'Angry', 'Anxious', 'Excited', 'Confused', 'Neutral'))
+        "Your main emotion right now", 
+        ('Happy', 'Sad', 'Angry', 'Anxious', 'Excited', 'Confused', 'Neutral'),
+        help="Select the emotion that best describes how you're feeling at this moment.")
     
 with col2:
     emotion_intensity = st.select_slider(
-        "On a scale of 1-5, how intense is this emotion? :thermometer:",
-        options=[1, 2, 3, 4, 5])
-    emotion_duration = st.selectbox(
-        "How long have you been feeling this way? :hourglass_flowing_sand:",
-        ('Just now', 'A few hours', 'A day', 'A few days', 'A week or more'))
-    emotion_context = st.text_input("Can you briefly describe the context or situation? :memo:")
+        "Intensity of this emotion",
+        options=[1, 2, 3, 4, 5],
+        help="On a scale of 1-5, how intense is this emotion? 1 being mild and 5 being very strong.")
+
+emotion_duration = st.selectbox(
+    "Duration of this emotion",
+    ('Just now', 'A few hours', 'A day', 'A few days', 'A week or more'),
+    help="Approximately how long have you been feeling this way?")
+
+emotion_context = st.text_area("Context", value="", height=100, help="Can you briefly describe the situation or event that led to this emotion?")
 
 if st.button('NEXT :arrow_right:'):
     # storing page data so can be accessed in export function on next page
