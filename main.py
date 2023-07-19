@@ -18,17 +18,27 @@ st.markdown(
 )
 
 #App introduction and description
+#App introduction and description
 st.title("Welcome to Reflect :brain:")
-st.markdown("""
-Sometimes it can be difficult to understand our emotional reactions.
-Reflect is here as a guide on your journey of emotional self-discovery. 
-Through a series of interactive questions, Reflect helps you delve deeper into your feelings, 
-identify your emotional triggers, and gain a better understanding of your reactions. 
-Let's get started! :rocket:
-            
-Please note, Reflect is not a substitute for professional mental health services.
-This is a project!
-""")
+
+# Create two columns for description and image
+col1, col2 = st.columns([3,1])  # adjust the numbers to change the width ratio of the columns
+
+with col1:
+    st.markdown("""
+    Sometimes it can be difficult to understand our emotional reactions.
+    Reflect is here as a guide on your journey of emotional self-discovery. 
+    Through a series of interactive questions, Reflect helps you delve deeper into your feelings, 
+    identify your emotional triggers, and gain a better understanding of your reactions. 
+    Let's get started! :rocket:
+                
+    Please note, Reflect is not a substitute for professional mental health services.
+    This is a project!
+    """)
+
+with col2:
+    st.image('image.png')  # replace 'image.png' with the path to your image file
+
 
 #Personal information inputs
 st.header("Let's Reflect :thought_balloon:")
