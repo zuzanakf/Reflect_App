@@ -40,7 +40,9 @@ if prompt := st.chat_input("Start by describing your feelings..."):
 
         # Adding a prompt for the model
         model_prompt = f"""
-        You are an AI trained to help people understand their emotions. The user has just said: '{prompt}'. 
+        You are an AI trained to help people understand their emotions. The user named {st.session_state.data['User Name']} has just said: '{prompt}'. 
+        They are currently feeling {st.session_state.data['Main Emotion']} at an intensity level of {st.session_state.data['Emotion Intensity']}. 
+        The context they provided is: {st.session_state.data['Emotion Context']}. 
         Help them explore why they might be feeling this way, asking open-ended questions to encourage deeper reflection.
         """
         conversation.append({"role": "system", "content": model_prompt})
