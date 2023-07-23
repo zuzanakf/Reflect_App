@@ -31,8 +31,8 @@ if st.session_state.messages:
     last_question = st.session_state.messages[-1]["content"] if st.session_state.messages[-1]["role"] == "assistant" else ""
     last_response = st.session_state.messages[-1]["content"] if st.session_state.messages[-1]["role"] == "user" else ""
 
-    col1.markdown(f"**GPT-3 Question:**\n\n{last_question}")
-    col2.markdown(f"**User Response:**\n\n{last_response}")
+    col1.markdown(f"**{st.session_state.data['User Name']}:**\n\n{last_response}")
+    col2.markdown(f"**Our Reflection Question:**\n\n{last_question}")
 
 #Calling OpenAI
 if prompt := st.chat_input("Start by describing your feelings..."):
