@@ -1,9 +1,11 @@
-'''import streamlit as st
-from streamlit_extras.switch_page_button import switch_page
-import openai
-import pandas as pd'''
+#import streamlit as st
+
+#import openai
+#import pandas as pd
 # Import necessary libraries
 import streamlit as st
+#extras
+from streamlit_extras.switch_page_button import switch_page
 from langchain.chains import ConversationChain
 from langchain.chains.conversation.memory import ConversationEntityMemory
 from langchain.chains.conversation.prompt import ENTITY_MEMORY_CONVERSATION_TEMPLATE
@@ -49,12 +51,12 @@ if API_O:
     # Create an OpenAI instance
     llm = OpenAI(temperature=0,
                 openai_api_key=API_O, 
-                model_name=MODEL, 
+                model_name='gpt-3.5-turbo', 
                 verbose=False) 
 
     # Create a ConversationEntityMemory object if not already created
     if 'entity_memory' not in st.session_state:
-            st.session_state.entity_memory = ConversationEntityMemory(llm=llm, k=K )
+            st.session_state.entity_memory = ConversationEntityMemory(llm=llm, k=20 )
         
         # Create the ConversationChain object with the specified configuration
     Conversation = ConversationChain(
