@@ -1,9 +1,90 @@
-import streamlit as st
+'''import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 import openai
-import pandas as pd
+import pandas as pd'''
+# Import necessary libraries
+import streamlit as st
+from langchain.chains import ConversationChain
+from langchain.chains.conversation.memory import ConversationEntityMemory
+from langchain.chains.conversation.prompt import ENTITY_MEMORY_CONVERSATION_TEMPLATE
+from langchain.llms import OpenAI
 
-#Page configurations
+# Set Streamlit page configuration
+st.set_page_config(page_title='🧠MemoryBot🤖', layout='wide')
+
+# Initialize session states
+if "generated" not in st.session_state:
+    st.session_state["generated"] = ""
+if "input" not in st.session_state:
+    st.session_state["input"] = ""
+
+# Define function to get user input
+def get_text():
+    """
+    Get the user input text.
+
+    Returns:
+        (str): The text entered by the user
+    """
+    input_text = st.text_input("You: ", st.session_state["input"], key="input",
+                            placeholder="Your AI assistant here! Ask me anything ...", 
+                            label_visibility='hidden')
+    return input_text
+
+# Define function to start a new chat
+def new_chat():
+    """
+    Clears session state and starts a new chat.
+    """
+    st.session_state["generated"] = ""
+    st.session_state["input"] = ""
+    st.session_state.entity_memory.entity_store = {}
+    st.session_state.entity_memory.buffer.clear()
+
+# Ask the user to enter their OpenAI API key
+API_O = st.sidebar.text_input("API-KEY", type="password")
+
+# Session state storage would be ideal
+if API_O:
+    # Create an OpenAI instance
+    llm = OpenAI(temperature=0,
+                openai_api_key=API_O, 
+                model_name=MODEL, 
+                verbose=False) 
+
+    # Create a ConversationEntityMemory object if not already created
+    if 'entity_memory' not in st.session_state:
+            st.session_state.entity_memory = ConversationEntityMemory(llm=llm, k=K )
+        
+        # Create the ConversationChain object with the specified configuration
+    Conversation = ConversationChain(
+            llm=llm, 
+            prompt=ENTITY_MEMORY_CONVERSATION_TEMPLATE,
+            memory=st.session_state.entity_memory
+        )  
+else:
+    st.sidebar.warning('API key required to try this app.The API key is not stored in any form.')
+
+# Add a button to start a new chat
+st.sidebar.button("New Chat", on_click = new_chat, type='primary')
+
+# Get the user input
+user_input = get_text()
+
+# Generate the output using the ConversationChain object and the user input, and add the input/output to the session
+if user_input:
+    output = Conversation.run(input=user_input)  
+    st.session_state["input"] = user_input
+    st.session_state["generated"] = output
+
+# Display the conversation
+col1, col2 = st.beta_columns(2)
+with col1:
+    st.info(st.session_state["input"])
+with col2:
+    st.success(st.session_state["generated"])
+
+'''#Page configurations
 st.set_page_config(page_title="Reflect - Emotional Exploration", page_icon=":brain:", initial_sidebar_state="collapsed")
 
 #App introduction and description
@@ -61,8 +142,8 @@ if prompt := st.chat_input("Start by describing your feelings..."):
             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
-
-# Save conversation to DataFrame when user types 'stop'
+'''
+'''# Save conversation to DataFrame when user types 'stop'
 if prompt is not None and prompt.lower() == 'stop':
     df = pd.DataFrame(st.session_state.messages)
     
@@ -74,7 +155,7 @@ if prompt is not None and prompt.lower() == 'stop':
     
     df.to_csv('reflect_conversation.csv', index=False)
     st.success('Conversation saved to DataFrame.')
-
+'''
 
 
 # Add button to go to the next page
