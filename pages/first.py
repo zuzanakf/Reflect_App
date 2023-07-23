@@ -23,17 +23,6 @@ if "openai_model" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Create two columns for the flashcards
-col1, col2 = st.columns(2)
-
-# Display the most recent question and response in the flashcards
-if st.session_state.messages:
-    last_question = st.session_state.messages[-1]["content"] if st.session_state.messages[-1]["role"] == "assistant" else ""
-    last_response = st.session_state.messages[-1]["content"] if st.session_state.messages[-1]["role"] == "user" else ""
-
-    col1.markdown(f"**{st.session_state.data['User Name']}:**\n\n{last_response}")
-    col2.markdown(f"**Our Reflection Question:**\n\n{last_question}")
-
 #Calling OpenAI
 if prompt := st.chat_input("Start by describing your feelings..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -62,6 +51,17 @@ if prompt := st.chat_input("Start by describing your feelings..."):
         stream=True,):
         full_response += response.choices[0].delta.get("content", "")
     st.session_state.messages.append({"role": "assistant", "content": full_response})
+
+# Create two columns for the flashcards
+col1, col2 = st.columns(2)
+
+# Display the most recent question and response in the flashcards
+if st.session_state.messages:
+    last_question = st.session_state.messages[-1]["content"] if st.session_state.messages[-1]["role"] == "assistant" else ""
+    last_response = st.session_state.messages[-1]["content"] if st.session_state.messages[-1]["role"] == "user" else ""
+
+    col1.markdown(f"**{st.session_state.data['User Name']}:**\n\n{last_response}")
+    col2.markdown(f"**Our Reflection Question:**\n\n{last_question}")
 
 # Save conversation to DataFrame when user types 'stop'
 if prompt is not None and prompt.lower() == 'stop':
