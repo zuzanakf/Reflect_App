@@ -41,8 +41,9 @@ def new_chat():
     """
     st.session_state["generated"] = ""
     st.session_state["input_text"] = ""
-    st.session_state.entity_memory.entity_store = {}
+    st.session_state.entity_memory = ConversationEntityMemory(llm=llm, k=20)
     st.session_state.entity_memory.buffer.clear()
+
 
 # Ask the user to enter their OpenAI API key
 API_O = st.sidebar.text_input("API-KEY", type="password")
