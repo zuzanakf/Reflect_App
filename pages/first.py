@@ -29,10 +29,10 @@ def get_text():
     Returns:
         (str): The text entered by the user
     """
-    st.session_state["input_text"] = st.text_input("You: ", st.session_state["input_text"], key="input_text",
+    return st.text_input("You: ", st.session_state["input_text"], key="input_text",
                             placeholder="Your AI assistant here! Ask me anything ...", 
                             label_visibility='hidden')
-    return st.session_state["input_text"]
+
 
 # Define function to start a new chat
 def new_chat():
@@ -74,10 +74,16 @@ st.sidebar.button("New Chat", on_click = new_chat, type='primary')
 # Get the user input
 user_input = get_text()
 
+# Check if the user input is different from the current session state value
+if user_input != st.session_state["input_text"]:
+    # Update the session state value
+    st.session_state["input_text"] = user_input
+
 # Generate the output using the ConversationChain object and the user input, and add the input/output to the session
 if user_input:
     output = Conversation.run(input=user_input)  
     st.session_state["generated"] = output
+
 
 
 # Display the conversation
