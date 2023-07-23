@@ -2,9 +2,10 @@
 
 #import openai
 #import pandas as pd
+
+#extras
 # Import necessary libraries
 import streamlit as st
-#extras
 from streamlit_extras.switch_page_button import switch_page
 from langchain.chains import ConversationChain
 from langchain.chains.conversation.memory import ConversationEntityMemory
@@ -17,8 +18,8 @@ st.set_page_config(page_title='🧠MemoryBot🤖', layout='wide')
 # Initialize session states
 if "generated" not in st.session_state:
     st.session_state["generated"] = ""
-if "input" not in st.session_state:
-    st.session_state["input"] = ""
+if "input_text" not in st.session_state:
+    st.session_state["input_text"] = ""
 
 # Define function to get user input
 def get_text():
@@ -28,7 +29,7 @@ def get_text():
     Returns:
         (str): The text entered by the user
     """
-    input_text = st.text_input("You: ", st.session_state["input"], key="input",
+    input_text = st.text_input("You: ", st.session_state["input_text"], key="input_text",
                             placeholder="Your AI assistant here! Ask me anything ...", 
                             label_visibility='hidden')
     return input_text
@@ -39,7 +40,7 @@ def new_chat():
     Clears session state and starts a new chat.
     """
     st.session_state["generated"] = ""
-    st.session_state["input"] = ""
+    st.session_state["input_text"] = ""
     st.session_state.entity_memory.entity_store = {}
     st.session_state.entity_memory.buffer.clear()
 
@@ -76,15 +77,16 @@ user_input = get_text()
 # Generate the output using the ConversationChain object and the user input, and add the input/output to the session
 if user_input:
     output = Conversation.run(input=user_input)  
-    st.session_state["input"] = user_input
+    st.session_state["input_text"] = user_input
     st.session_state["generated"] = output
 
 # Display the conversation
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 with col1:
-    st.info(st.session_state["input"])
+    st.info(st.session_state["input_text"])
 with col2:
     st.success(st.session_state["generated"])
+
 
 '''#Page configurations
 st.set_page_config(page_title="Reflect - Emotional Exploration", page_icon=":brain:", initial_sidebar_state="collapsed")
