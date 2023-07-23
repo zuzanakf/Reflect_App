@@ -13,7 +13,14 @@ from langchain.chains.conversation.prompt import ENTITY_MEMORY_CONVERSATION_TEMP
 from langchain.llms import OpenAI
 
 # Set Streamlit page configuration
-st.set_page_config(page_title='🧠MemoryBot🤖', layout='wide')
+st.set_page_config(page_title='Reflect - Emotional Exploration', layout='wide')
+
+st.title("Reflect Chat :wind_blowing_face:")
+st.markdown("""
+Let's start our journey. 
+In this session, you'll chat with our AI to better understand your feelings. 
+When you're ready to end the session, simply type 'stop'. Let's get started! :rocket:
+""")
 
 # Initialize session states
 if "generated" not in st.session_state:
@@ -63,7 +70,12 @@ if API_O:
         # Create the ConversationChain object with the specified configuration
     Conversation = ConversationChain(
             llm=llm, 
-            prompt=ENTITY_MEMORY_CONVERSATION_TEMPLATE,
+            prompt=f"""
+        You are an AI trained to help people understand their emotions. The user named {st.session_state.data['User Name']} has just said: hi. 
+        They are currently feeling {st.session_state.data['Main Emotion']} at an intensity level of {st.session_state.data['Emotion Intensity']}. 
+        The context they provided is: {st.session_state.data['Emotion Context']}. 
+        Help them explore why they might be feeling this way, asking open-ended questions to encourage deeper reflection.
+        """,
             memory=st.session_state.entity_memory
         )  
 else:
