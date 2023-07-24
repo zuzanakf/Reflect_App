@@ -28,6 +28,9 @@ if "openai_model" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+# Initialize prompt
+prompt = None
+
 #Calling OpenAI
 if API_O:
     if prompt := st.chat_input("Start by describing your feelings..."):
