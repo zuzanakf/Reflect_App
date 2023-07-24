@@ -7,8 +7,6 @@ from streamlit_extras.switch_page_button import switch_page
 # Set Streamlit page configuration
 st.set_page_config(page_title='Reflect - Emotional Exploration', layout='wide')
 
-# Ask the user to enter their OpenAI API key
-API_O = st.sidebar.text_input("API-KEY", type="password")
 
 #titles
 st.title("Reflect Chat :wind_blowing_face:")
@@ -19,6 +17,8 @@ When you're ready to end the session, simply type 'stop'. Let's get started! :ro
 """)
 
 #Creating bot
+# Ask the user to enter their OpenAI API key
+API_O = st.sidebar.text_input("API-KEY", type="password")
 #openai.api_key = st.secrets["API_KEY"]
 openai.api_key = API_O
 
