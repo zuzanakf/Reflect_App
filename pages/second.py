@@ -17,7 +17,7 @@ Here, you'll see a summary of the emotions you've explored and the key topics re
 df = pd.read_csv('reflect_conversation.csv')
 
 # Initialize OpenAI
-openai.api_key = st.secrets["API_KEY"]
+#openai.api_key = st.secrets["API_KEY"]
 
 # Extract key topics for each emotion
 emotion_topics = {}
