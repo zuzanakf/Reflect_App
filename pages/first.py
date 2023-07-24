@@ -58,7 +58,7 @@ col1, col2 = st.columns(2)
 # Display the most recent question and response in the flashcards
 if st.session_state.messages:
     last_question = st.session_state.messages[-1]["content"] if st.session_state.messages[-1]["role"] == "assistant" else ""
-    last_response = st.session_state.messages[-2]["content"] if st.session_state.messages[-1]["role"] == "user" else ""
+    last_response = st.session_state.messages[-2]["content"] if st.session_state.messages[-2]["role"] == "user" else ""
 
     col1.markdown(f"**{st.session_state.data['User Name']}:**\n\n{last_response}")
     col2.markdown(f"**Our Reflection Question:**\n\n{last_question}")
