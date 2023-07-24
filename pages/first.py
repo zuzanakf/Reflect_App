@@ -7,6 +7,10 @@ from streamlit_extras.switch_page_button import switch_page
 # Set Streamlit page configuration
 st.set_page_config(page_title='Reflect - Emotional Exploration', layout='wide')
 
+# Ask the user to enter their OpenAI API key
+API_O = st.sidebar.text_input("API-KEY", type="password")
+
+#titles
 st.title("Reflect Chat :wind_blowing_face:")
 st.markdown("""
 Let's start our journey. 
@@ -15,7 +19,8 @@ When you're ready to end the session, simply type 'stop'. Let's get started! :ro
 """)
 
 #Creating bot
-openai.api_key = st.secrets["API_KEY"]
+#openai.api_key = st.secrets["API_KEY"]
+openai.api_key = API_O
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
@@ -24,33 +29,37 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 #Calling OpenAI
-if prompt := st.chat_input("Start by describing your feelings..."):
-    st.session_state.messages.append({"role": "user", "content": prompt})
+if API_O:
+    if prompt := st.chat_input("Start by describing your feelings..."):
+        st.session_state.messages.append({"role": "user", "content": prompt})
 
-    full_response = ""
-    conversation = [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
+        full_response = ""
+        conversation = [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
 
-    # Adding a prompt for the model
-    model_prompt = f"""
-    You are an AI trained to help people understand their emotions. The user named {st.session_state.data['User Name']} has just said: '{prompt}'. 
-    They are currently feeling {st.session_state.data['Main Emotion']} at an intensity level of {st.session_state.data['Emotion Intensity']}. 
-    The context they provided is: {st.session_state.data['Emotion Context']}. 
-    Help them explore why they might be feeling this way, asking open-ended questions to encourage deeper reflection.
-    """
-    conversation.append({"role": "system", "content": model_prompt})
+        # Adding a prompt for the model
+        model_prompt = f"""
+        You are an AI trained to help people understand their emotions. The user named {st.session_state.data['User Name']} has just said: '{prompt}'. 
+        They are currently feeling {st.session_state.data['Main Emotion']} at an intensity level of {st.session_state.data['Emotion Intensity']}. 
+        The context they provided is: {st.session_state.data['Emotion Context']}. 
+        Help them explore why they might be feeling this way, asking open-ended questions to encourage deeper reflection.
+        """
+        conversation.append({"role": "system", "content": model_prompt})
 
-    for response in openai.ChatCompletion.create(
-        model=st.session_state["openai_model"],
-        messages=conversation,
-        temperature=0.35,
-        max_tokens=1003,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0,
-        stop=["stop"],
-        stream=True,):
-        full_response += response.choices[0].delta.get("content", "")
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+        for response in openai.ChatCompletion.create(
+            model=st.session_state["openai_model"],
+            messages=conversation,
+            temperature=0.35,
+            max_tokens=1003,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0,
+            stop=["stop"],
+            stream=True,):
+            full_response += response.choices[0].delta.get("content", "")
+        st.session_state.messages.append({"role": "assistant", "content": full_response})
+else:
+    st.sidebar.warning('API key required to try this app.The API key is not stored in any form.')
+    # st.stop()
 
 # Create two columns for the flashcards
 col1, col2 = st.columns(2)
