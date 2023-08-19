@@ -46,4 +46,4 @@ st.session_state.data = {
 }
 
 if st.button('NEXT :arrow_right:'):
-    switch_page('emotional_state')
+    switch_page('emotions')
