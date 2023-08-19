@@ -30,23 +30,22 @@ st.markdown("""
 #Personal information inputs
 st.header("Tell us about yourself")
 
-user_name = st.text_input("Your name", value="", help="Enter your name here.")
-
-st.header("Your current emotional state")
-
 col1, col2 = st.columns(2)
-
 with col1:
+   user_name = st.text_input("Your name", value="", help="Enter your name here.")
+with col2:
     user_emotion = st.selectbox(
         "Your main emotion right now", 
         ('Happy', 'Sad', 'Angry', 'Anxious', 'Excited', 'Confused', 'Neutral'),
         help="Select the emotion that best describes how you're feeling at this moment.")
     
-with col2:
-    emotion_intensity = st.select_slider(
-        "Intensity of this emotion",
-        options=[1, 2, 3, 4, 5],
-        help="On a scale of 1-5, how intense is this emotion? 1 being mild and 5 being very strong.")
+st.header("Your current emotional state")
+
+
+emotion_intensity = st.select_slider(
+    "Intensity of this emotion",
+    options=[1, 2, 3, 4, 5],
+    help="On a scale of 1-5, how intense is this emotion? 1 being mild and 5 being very strong.")
 
 emotion_duration = st.selectbox(
     "Duration of this emotion",
