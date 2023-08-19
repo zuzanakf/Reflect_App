@@ -11,7 +11,7 @@ st.markdown(
         display: none
     }
     [data-testid="stAppViewContainer"] {
-        background: linear-gradient(#4B88AE, #D0EEFA)
+        background: linear-gradient(#4B88AE, #626CE3)
     }
 </style>
 """,
