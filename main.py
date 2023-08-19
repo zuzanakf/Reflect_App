@@ -46,29 +46,28 @@ st.session_state.data = {
     'Main Emotion': user_emotion
 }
 
-# Create four columns
-col1, col2, col3, col4 = st.columns([1,1,1,1])
+# Create three columns
+col1, col2, col3 = st.columns([1,1,1])
 
-# Empty spaces in the first three columns
+# Empty space in the first and third columns
 with col1:
-    st.write("")  
-with col2:
     st.write("")  
 with col3:
     st.write("")  
 
-# Place the button in the last column
-with col4:
+# Place the button in the middle column
+with col2:
     st.markdown("""
         <style>
             .stButton>button {
-                background-color: rgba(140, 92, 88, 0.5);  /* Semi-transparent */
+                background-color: #224040;
                 color: white;
                 padding: 14px 28px;
                 font-size: 16px;
                 cursor: pointer;
+                border-radius: 50%;  /* Make it a circle */
             }
         </style>
     """, unsafe_allow_html=True)
-    if st.button('NEXT :arrow_right:'):
+    if st.button('NEXT'):
         switch_page('emotional_state')
