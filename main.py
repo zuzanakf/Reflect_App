@@ -58,4 +58,4 @@ with col3:
 # Place the button in the middle column
 with col1:
     if st.button('NEXT'):
-        switch_page('emotional_state')
+        switch_page('emotions')
