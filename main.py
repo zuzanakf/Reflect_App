@@ -22,11 +22,12 @@ st.markdown(
 st.title("Welcome to Reflect")
 
 st.markdown("""
-    Reflect is an interactive tool designed to help you explore and understand your emotions. 
-    You will be guided through a series of questions and based on your responses, Reflect will provide you with insights into your emotional state.
+    Reflect is an interactive tool designed to help you explore your emotions. 
+    You will asnwer a few questions and then talk to ReflectBot.
     Let's get started!
     *Please note: Reflect is not a substitute for professional mental health services.*
     """)
+
 #Personal information inputs
 st.header("Tell us about yourself")
 
