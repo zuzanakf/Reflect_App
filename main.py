@@ -39,28 +39,11 @@ with col2:
         ('Happy', 'Sad', 'Angry', 'Anxious', 'Excited', 'Confused', 'Neutral'),
         help="Select the emotion that best describes how you're feeling at this moment.")
     
-st.header("Your current emotional state")
-
-
-emotion_intensity = st.select_slider(
-    "Intensity of this emotion",
-    options=[1, 2, 3, 4, 5],
-    help="On a scale of 1-5, how intense is this emotion? 1 being mild and 5 being very strong.")
-
-emotion_duration = st.selectbox(
-    "Duration of this emotion",
-    ('Just now', 'A few hours', 'A day', 'A few days', 'A week or more'),
-    help="Approximately how long have you been feeling this way?")
-
-emotion_context = st.text_area("Context", value="", height=100, help="Can you briefly describe the situation or event that led to this emotion?")
+# Save data to session state
+st.session_state.data = {
+    'User Name': user_name,
+    'Main Emotion': user_emotion
+}
 
 if st.button('NEXT :arrow_right:'):
-    # storing page data so can be accessed in export function on next page
-    st.session_state.data = {
-    'User Name': user_name,
-    'Main Emotion': user_emotion,
-    'Emotion Intensity': emotion_intensity,
-    'Emotion Duration': emotion_duration,
-    'Emotion Context': emotion_context
-    }
-    switch_page('first')
+    switch_page('emotional_state')
