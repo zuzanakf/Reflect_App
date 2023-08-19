@@ -10,14 +10,8 @@ st.set_page_config(page_title="Reflect - Emotional Exploration", page_icon=":bra
 st.markdown(
     """
     <style>
-        .custom-header {
-            background-color: #698686;
-            padding: 10px;
-            border-radius: 10px;
-            color: white;
-        }
         .custom-list-item {
-            background-color: #e6e6e6;
+            background-color: #698686;
             padding: 10px;
             border-radius: 10px;
             margin-bottom: 5px;
@@ -60,7 +54,7 @@ for emotion in df['Main Emotion'].unique():
 
 # Display the key topics for each emotion
 for emotion, topics in emotion_topics.items():
-    st.markdown(f'<div class="custom-header">{emotion} :brain:</div>', unsafe_allow_html=True)
+    st.markdown(f'{emotion} :{emotion}:')
     for topic in topics:
         st.markdown(f'<div class="custom-list-item">- {topic}</div>', unsafe_allow_html=True)
 
