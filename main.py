@@ -37,7 +37,7 @@ with col1:
 with col2:
     user_emotion = st.selectbox(
         "Your main emotion right now", 
-        ('Happy', 'Sad', 'Angry', 'Anxious', 'Excited', 'Confused', 'Neutral'),
+        ('Happy', 'Sad', 'Angry', 'Anxious', 'Excited', 'Confused', 'Neutral', 'Jealous'),
         help="Select the emotion that best describes how you're feeling at this moment.")
     
 # Save data to session state

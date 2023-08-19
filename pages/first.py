@@ -6,7 +6,15 @@ from streamlit_extras.switch_page_button import switch_page
 
 # Set Streamlit page configuration
 st.set_page_config(page_title='Reflect - Emotional Exploration', layout='wide')
-
+st.markdown(
+    """
+    [data-testid="stAppViewContainer"] {
+        background: linear-gradient(#5a8c8c,#224040);
+    }
+</style>
+""",
+    unsafe_allow_html=True,
+)
 
 #titles
 st.title("Reflect Chat :wind_blowing_face:")
