@@ -12,7 +12,7 @@ st.markdown(
         [data-testid="stAppViewContainer"] {
             background: linear-gradient(#5a8c8c,#224040);
         }
-        .transparent-box {
+        .custom-box {
             background-color: #698686;
             padding: 10px;
             border-radius: 10px;
@@ -86,8 +86,8 @@ if st.session_state.messages:
     last_question = st.session_state.messages[-1]["content"] if st.session_state.messages[-1]["role"] == "assistant" else ""
     last_response = st.session_state.messages[-2]["content"] if st.session_state.messages[-2]["role"] == "user" else ""
 
-    col1.markdown(f'<div class="transparent-box">**{st.session_state.data["User Name"]}:**\n\n{last_response}</div>', unsafe_allow_html=True)
-    col2.markdown(f'<div class="transparent-box">**Our Reflection Question:**\n\n{last_question}</div>', unsafe_allow_html=True)
+    col1.markdown(f'<div class="custom-box"><strong>{st.session_state.data["User Name"]}</strong>:<br>{last_response}</div>', unsafe_allow_html=True)
+    col2.markdown(f'<div class="custom-box"><strong>Our Reflection Question</strong>:<br>{last_question}</div>', unsafe_allow_html=True)
 
 # Save conversation to DataFrame when user types 'stop'
 if prompt is not None and prompt.lower() == 'stop':
