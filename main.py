@@ -10,6 +10,9 @@ st.markdown(
     [data-testid="collapsedControl"] {
         display: none
     }
+    [data-testid="stAppViewContainer"] {
+        background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c)
+    }
 </style>
 """,
     unsafe_allow_html=True,
