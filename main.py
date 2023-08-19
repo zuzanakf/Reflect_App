@@ -46,5 +46,25 @@ st.session_state.data = {
     'Main Emotion': user_emotion
 }
 
-if st.button('NEXT :arrow_right:'):
-    switch_page('emotions')
+col1, col2, col3 = st.columns([1,1,1])
+
+with col1:
+    st.write("")  # Empty space
+
+with col2:
+    st.write("")  # Empty space
+
+with col3:
+    st.markdown("""
+        <style>
+            .stButton>button {
+                background-color: DodgerBlue;
+                color: white;
+                padding: 14px 28px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+    if st.button('NEXT :arrow_right:'):
+        switch_page('emotional_state')
