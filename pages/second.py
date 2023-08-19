@@ -48,7 +48,7 @@ for emotion in df['Main Emotion'].unique():
     
     # Use the model to extract key topics
     response = openai.Completion.create(
-        engine="gpt-3.5-turbo",
+        engine="text-davinci-002",
         prompt=f"The following is a conversation about feeling {emotion}:\n{emotion_conversation}\n\nExtract the key topics related to this emotion:",
         temperature=0.3,
         max_tokens=100,
