@@ -46,19 +46,23 @@ st.session_state.data = {
     'Main Emotion': user_emotion
 }
 
-col1, col2, col3 = st.columns([1,1,1])
+# Create four columns
+col1, col2, col3, col4 = st.columns([1,1,1,1])
 
+# Empty spaces in the first three columns
 with col1:
-    st.write("")  # Empty space
-
+    st.write("")  
 with col2:
-    st.write("")  # Empty space
-
+    st.write("")  
 with col3:
+    st.write("")  
+
+# Place the button in the last column
+with col4:
     st.markdown("""
         <style>
             .stButton>button {
-                background-color: DodgerBlue;
+                background-color: rgba(140, 92, 88, 0.5);  /* Semi-transparent */
                 color: white;
                 padding: 14px 28px;
                 font-size: 16px;
