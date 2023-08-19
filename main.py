@@ -11,7 +11,7 @@ st.markdown(
         display: none
     }
     [data-testid="stAppViewContainer"] {
-        background: linear-gradient(#3F5759, #888C81)
+        background: linear-gradient(#232659, #3F3CA6)
     }
 </style>
 """,
@@ -21,20 +21,12 @@ st.markdown(
 #App introduction and description
 st.title("Welcome to Reflect")
 
-# Create two columns for description and image
-col1, col2 = st.columns([3,1])  
-
-with col1:
-    st.markdown("""
+st.markdown("""
     Reflect is an interactive tool designed to help you explore and understand your emotions. 
     You will be guided through a series of questions and based on your responses, Reflect will provide you with insights into your emotional state.
     Let's get started!
     *Please note: Reflect is not a substitute for professional mental health services.*
     """)
-
-with col2:
-    st.image('image.png')  # replace 'image.png' with the path to your image file
-
 #Personal information inputs
 st.header("Tell us about yourself")
 
