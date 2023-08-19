@@ -13,7 +13,7 @@ st.markdown(
             background: linear-gradient(#5a8c8c,#224040);
         }
         .transparent-box {
-            background-color: rgba(255, 255, 255, 0.7);
+            background-color: #698686;
             padding: 10px;
             border-radius: 10px;
         }
