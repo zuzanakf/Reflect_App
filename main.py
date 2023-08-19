@@ -50,13 +50,13 @@ st.session_state.data = {
 col1, col2, col3 = st.columns([1,1,1])
 
 # Empty space in the first and third columns
-with col1:
+with col2:
     st.write("")  
 with col3:
     st.write("")  
 
 # Place the button in the middle column
-with col2:
+with col1:
     st.markdown("""
         <style>
             .stButton>button {
