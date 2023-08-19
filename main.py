@@ -57,17 +57,5 @@ with col3:
 
 # Place the button in the middle column
 with col1:
-    st.markdown("""
-        <style>
-            .stButton>button {
-                background-color: rgba(34, 64, 64, 0.7);  /* Semi-transparent */
-                color: white;
-                padding: 28px;  /* Equal padding */
-                font-size: 16px;
-                cursor: pointer;
-                border-radius: 50%;  /* Make it a circle */
-            }
-        </style>
-    """, unsafe_allow_html=True)
     if st.button('NEXT'):
         switch_page('emotional_state')
