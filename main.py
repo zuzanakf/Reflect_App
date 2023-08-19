@@ -60,9 +60,9 @@ with col2:
     st.markdown("""
         <style>
             .stButton>button {
-                background-color: #224040;
+                background-color: rgba(34, 64, 64, 0.7);  /* Semi-transparent */
                 color: white;
-                padding: 14px 28px;
+                padding: 28px;  /* Equal padding */
                 font-size: 16px;
                 cursor: pointer;
                 border-radius: 50%;  /* Make it a circle */
