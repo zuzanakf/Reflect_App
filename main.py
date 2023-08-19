@@ -19,7 +19,7 @@ st.markdown(
 )
 
 #App introduction and description
-st.title("Welcome to Reflect")
+st.title(":sunrise_over_mountains: Welcome to Reflect")
 
 st.markdown("""
     Reflect is an interactive tool designed to help you explore your emotions. 
