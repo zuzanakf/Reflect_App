@@ -8,10 +8,10 @@ st.markdown(
     """
 <style>
     [data-testid="collapsedControl"] {
-        display: none
+        display: none;
     }
     [data-testid="stAppViewContainer"] {
-        background: linear-gradient(#5a8c8c, #d9bd9c)
+        background: linear-gradient(#5a8c8c, #d9bd9c);
     }
 </style>
 """,
