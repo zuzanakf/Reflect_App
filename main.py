@@ -1,7 +1,5 @@
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
-import openai
-import pandas as pd
 
 #Page configurations
 st.set_page_config(page_title="Reflect - Emotional Exploration", page_icon=":brain:", initial_sidebar_state="collapsed")
