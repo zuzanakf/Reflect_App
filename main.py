@@ -25,8 +25,8 @@ st.markdown("""
     Reflect is an interactive emotional diary designed to help you explore your emotions. 
     You will answer a few questions and then talk to ReflectBot.
     Let's get started!
-    *Please note: This is not meant for production! Reflect is not a substitute for professional mental health services.*
     """)
+st.markdown("*Please note: This is not meant for production! Reflect is not a substitute for professional mental health services.*")
 
 #Personal information inputs
 st.header("Tell us about yourself")
