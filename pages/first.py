@@ -98,8 +98,6 @@ if prompt is not None and prompt.lower() == 'stop':
     df['Main Emotion'] = st.session_state.data['Main Emotion']
     df['Emotion Intensity'] = st.session_state.data['Emotion Intensity']
     df['Emotion Context'] = st.session_state.data['Emotion Context']
-    
-    df.to_csv('reflect_conversation.csv', index=False)
     st.success('Conversation saved to DataFrame.')
 
 # Add button to go to the next page
