@@ -22,10 +22,10 @@ st.markdown(
 st.title(":sunrise_over_mountains: Welcome to Reflect")
 
 st.markdown("""
-    Reflect is an interactive tool designed to help you explore your emotions. 
+    Reflect is an interactive emotional diary designed to help you explore your emotions. 
     You will answer a few questions and then talk to ReflectBot.
     Let's get started!
-    *Please note: Reflect is not a substitute for professional mental health services.*
+    *Please note: This is not meant for production! Reflect is not a substitute for professional mental health services.*
     """)
 
 #Personal information inputs

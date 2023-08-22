@@ -54,7 +54,7 @@ for emotion in df['Main Emotion'].unique():
 
 # Display the key topics for each emotion
 for emotion, topics in emotion_topics.items():
-    st.markdown(f'*{emotion}')
+    st.markdown(f'**{emotion}**')
     for topic in topics:
         st.markdown(f'<div class="custom-list-item">- {topic}</div>', unsafe_allow_html=True)
 
